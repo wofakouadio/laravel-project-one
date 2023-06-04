@@ -14,19 +14,19 @@ use \App\Models\Listings;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 //all listings
-Route::get('/listings', function(){
+Route::get('/', function(){
     return view('listings', [
         'heading' => 'Latest Listings',
         'listings' => Listings::all()
     ]);
 });
 //single listing
-Route::get('/listing/{id}', function($id){
+Route::get('/listing/{listing}', function(Listings $listing){
     return view('listing', [
-        'listing' => Listings::find($id)
+        'listing' => $listing
     ]);
 });
