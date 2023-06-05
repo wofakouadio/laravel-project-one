@@ -23,8 +23,14 @@ use \App\Http\Controllers\ListingsController;
 Route::get('/', [ListingsController::class, 'index']);
 //create form view for new listing
 Route::get('/listing/create', [ListingsController::class, 'create']);
-//str new listing from form view
+//store new listing from form view
 Route::post('/listing', [ListingsController::class, 'store']);
+//show edit listing form
+Route::get('/listing/{listing}/edit', [ListingsController::class, 'edit']);
+//update edit listing form
+Route::put('/listing/{listing}', [ListingsController::class, 'update']);
+//delete listing form
+Route::delete('/listing/{listing}', [ListingsController::class, 'destroy']);
 //single listing
 Route::get('/listing/{listing}', [ListingsController::class, 'show']);
 
