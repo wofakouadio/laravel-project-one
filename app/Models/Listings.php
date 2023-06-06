@@ -17,7 +17,8 @@ class Listings extends Model
         'email',
         'description',
         'tags',
-        'logo'
+        'logo',
+        'user_id'
     ];
 
     public function scopeFilter($query, array $filters){
@@ -29,6 +30,11 @@ class Listings extends Model
         if($filters['search'] ?? false){
             $query->where('title', 'LIKE', '%'.request('search').'%')->orWhere('description', 'LIKE', '%'.request('search').'%')->orWhere('tags', 'LIKE', '%'.request('search').'%')->orWhere('company', 'LIKE', '%'.request('search').'%')->orWhere('location', 'LIKE', '%'.request('search').'%');
         }
+    }
+
+//    relationship to users
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }
